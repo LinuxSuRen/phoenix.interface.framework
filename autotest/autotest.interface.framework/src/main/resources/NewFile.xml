@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suren:autotest xmlns:suren="http://autotest.interface.surenpi.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autotest.interface.surenpi.com http://autotest.interface.surenpi.com ">
+  <suren:interface url="http://fanyi.youdao.com/translate"
+  	method="POST">
+  	<suren:params>
+  		<suren:param name="action" value="FY_BY_CLICKBUTTON"/>
+  		<suren:param name="doctype" value="json"/>
+  		<suren:param name="i" value="gril"/>
+  	</suren:params>
+  </suren:interface>
+</suren:autotest>
