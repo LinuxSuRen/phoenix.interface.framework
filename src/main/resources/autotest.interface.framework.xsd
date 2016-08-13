@@ -7,22 +7,26 @@
 		<complexType>
 			<sequence>
 				<element name="interface" type="suren:interfaceType" maxOccurs="unbounded"></element>
+				<element name="interfaceGroup" type="suren:interfaceGroup" minOccurs="0" maxOccurs="unbounded"></element>
 			</sequence>
 		</complexType>
 	</element>
 	
 	<complexType name="interfaceGroup">
-		<attribute name="url" type="anyURI"></attribute>
 		<sequence>
 			<element name="interface" type="suren:interfaceType" maxOccurs="unbounded"></element>
 		</sequence>
+		<attribute name="url" type="anyURI"></attribute>
 	</complexType>
 	
 	<complexType name="interfaceType">
-		<attribute name="url" type="anyURI" use="required"></attribute>
 		<sequence>
-			<element name="params" type="suren:interfaceParamsType"></element>
+			<element name="params" type="suren:interfaceParamsType" minOccurs="0" maxOccurs="unbounded"></element>
 		</sequence>
+		<attribute name="id" type="ID"></attribute>
+		<attribute name="url" type="anyURI" use="required"></attribute>
+		<attribute name="method" type="suren:interfaceMethodEnum" default="GET"></attribute>
+		<attribute name="depend" type="string"></attribute>
 	</complexType>
 	
 	<complexType name="interfaceParamsType">
@@ -32,7 +36,23 @@
 	</complexType>
 	
 	<complexType name="interfaceParamType">
-		<attribute name="name" type="string"></attribute>
-		<attribute name="value" type="string"></attribute>
+		<attribute name="name" type="string" use="required"></attribute>
+		<attribute name="value" type="string" use="required"></attribute>
+		<attribute name="type" type="suren:interfaceParamValueTypeEnum" default="string"></attribute>
 	</complexType>
+
+	<simpleType name="interfaceMethodEnum">
+		<restriction base="string">
+			<enumeration value="GET"></enumeration>
+			<enumeration value="POST"></enumeration>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="interfaceParamValueTypeEnum">
+		<restriction base="string">
+			<enumeration value="string"></enumeration>
+			<enumeration value="int"></enumeration>
+			<enumeration value="url"></enumeration>
+		</restriction>
+	</simpleType>
 </schema>
