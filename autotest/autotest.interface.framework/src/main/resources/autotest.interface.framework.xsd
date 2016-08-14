@@ -35,6 +35,15 @@
 		</sequence>
 	</complexType>
 	
+	<complexType name="interfaceExpectType">
+		<sequence>
+			<element name="jsonExpect" type="suren:jsonExpectType"></element>
+		</sequence>
+	</complexType>
+	
+	<complexType name="jsonExpectType">
+	</complexType>
+	
 	<complexType name="interfaceParamType">
 		<attribute name="name" type="string" use="required"></attribute>
 		<attribute name="value" type="string" use="required"></attribute>
