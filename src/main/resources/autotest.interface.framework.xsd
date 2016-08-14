@@ -42,6 +42,24 @@
 	</complexType>
 	
 	<complexType name="jsonExpectType">
+		<choice>
+			<element name="simple"></element>
+			<element name="regex" type="suren:jsonExpectRegexType"></element>
+			<element name="extend" type="suren:jsonExpectExtendType"></element>
+		</choice>
+	</complexType>
+	
+	<complexType name="jsonExpectRegexType" mixed="true">
+		<attribute name="file" type="string"></attribute>
+		<attribute name="http" type="anyURI"></attribute>
+	</complexType>
+	
+	<complexType name="jsonExpectExtendType">
+		<attribute name="interface" type="string"
+			default="org.suren.autotest.interfaces.framework.json.JsonExpectExtend"></attribute>attribute>
+		<attribute name="class" type="string" use="required"></attribute>
+		<attribute name="before" type="string"></attribute>
+		<attribute name="after" type="string"></attribute>
 	</complexType>
 	
 	<complexType name="interfaceParamType">
