@@ -31,6 +31,9 @@ public class Parser
 		
 		parse(interEleList, requestList);
 		
+		List<Element> interGroupEleList = root.elements("interfaceGroup");
+		interGroupParse(interGroupEleList, requestList);
+		
 		return requestList;
 	}
 
@@ -43,18 +46,23 @@ public class Parser
 	{
 		for(Element interEle : interEleList)
 		{
-			Request request = new Request();
-			requestList.add(request);
-			
-			String url = interEle.attributeValue("url");
-			request.setUrl(url);
-			
-			Element paramEle = interEle.element("params");
-			
-			List<Element> paramEleList = paramEle.elements("param");
-			
-			parseParam(request, paramEleList);
+			parseInterface(interEle, requestList);
 		}
+	}
+	
+	private static void parseInterface(Element interEle, List<Request> requestList)
+	{
+		Request request = new Request();
+		requestList.add(request);
+		
+		String url = interEle.attributeValue("url");
+		request.setUrl(url);
+		
+		Element paramEle = interEle.element("params");
+		
+		List<Element> paramEleList = paramEle.elements("param");
+		
+		parseParam(request, paramEleList);
 	}
 
 	/**
@@ -76,6 +84,26 @@ public class Parser
 			
 			param.setName(name);
 			param.setValue(value);
+		}
+	}
+
+	/**
+	 * @param interGroupEleList
+	 * @param requestList
+	 */
+	private static void interGroupParse(List<Element> interGroupEleList,
+			List<Request> requestList)
+	{
+		for(Element interGroupEle : interGroupEleList)
+		{
+			String url = interGroupEle.attributeValue("url");
+			
+			List<Element> interEleList = interGroupEle.elements("interface");
+			for(Element interEle : interEleList)
+			{
+				interEle.addAttribute("url", url);
+				parseInterface(interEle, requestList);
+			}
 		}
 	}
 }

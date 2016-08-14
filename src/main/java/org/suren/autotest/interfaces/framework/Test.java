@@ -8,6 +8,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.stream.ImageOutputStreamImpl;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -35,19 +37,35 @@ public class Test
 	 */
 	public static void main(String[] args) throws DocumentException
 	{
-		List<Request> requestList = Parser.parse();
-		for(Request request : requestList)
+		CloseableHttpClient client = HttpClients.createDefault();
+		
+		try
 		{
-			testRequest(request);
+			List<Request> requestList = Parser.parse();
+			for(Request request : requestList)
+			{
+				testRequest(request, client);
+			}
+		}
+		finally
+		{
+			try
+			{
+				client.close();
+			}
+			catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
 	/**
 	 * @param request
 	 */
-	private static void testRequest(Request request)
+	private static void testRequest(Request request, CloseableHttpClient client)
 	{
-		CloseableHttpClient client = HttpClients.createDefault();
 		HttpPost post = new HttpPost(request.getUrl());
 		
 		List<NameValuePair> pairList = new ArrayList<NameValuePair>();
@@ -86,16 +104,6 @@ public class Test
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try
-		{
-			client.close();
 		}
 		catch (IOException e)
 		{
