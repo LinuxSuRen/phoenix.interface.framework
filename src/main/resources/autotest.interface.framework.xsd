@@ -6,7 +6,7 @@
 	<element name="autotest">
 		<complexType>
 			<sequence>
-				<element name="interface" type="suren:interfaceType" maxOccurs="unbounded"></element>
+				<element name="interface" type="suren:interfaceType" minOccurs="0" maxOccurs="unbounded"></element>
 				<element name="interfaceGroup" type="suren:interfaceGroup" minOccurs="0" maxOccurs="unbounded"></element>
 			</sequence>
 		</complexType>
@@ -56,7 +56,7 @@
 	
 	<complexType name="jsonExpectExtendType">
 		<attribute name="interface" type="string"
-			default="org.suren.autotest.interfaces.framework.json.JsonExpectExtend"></attribute>attribute>
+			default="org.suren.autotest.interfaces.framework.json.JsonExpectExtend"></attribute>
 		<attribute name="class" type="string" use="required"></attribute>
 		<attribute name="before" type="string"></attribute>
 		<attribute name="after" type="string"></attribute>
