@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.imageio.stream.ImageOutputStreamImpl;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -44,6 +45,17 @@ public class Test
 			List<Request> requestList = Parser.parse();
 			for(Request request : requestList)
 			{
+				int loop = request.getLoop();
+				if(loop > 0)
+				{
+					for(int i = 0; i < loop; i++)
+					{
+						testRequest(request, client);
+					}
+					
+					continue;
+				}
+				
 				testRequest(request, client);
 			}
 		}
@@ -92,13 +104,20 @@ public class Test
 		try
 		{
 			CloseableHttpResponse response = client.execute(post);
-			
-			HttpEntity responseEntity = response.getEntity();
-			
-			String jsonRes = EntityUtils.toString(responseEntity).trim();
-			
-			JSONObject obj = JSONObject.fromObject(jsonRes);
-			System.out.println(obj.toString(4));
+			int statusCode = response.getStatusLine().getStatusCode();
+			if(statusCode == 200)
+			{
+				HttpEntity responseEntity = response.getEntity();
+				
+				String jsonRes = EntityUtils.toString(responseEntity).trim();
+				
+				JSONObject obj = JSONObject.fromObject(jsonRes);
+				System.out.println(obj.toString(4));
+			}
+			else 
+			{
+				System.err.println("code : " + statusCode);
+			}
 		}
 		catch (ClientProtocolException e)
 		{

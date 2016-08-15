@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -56,7 +57,12 @@ public class Parser
 		requestList.add(request);
 		
 		String url = interEle.attributeValue("url");
+		String loop = interEle.attributeValue("loop");
 		request.setUrl(url);
+		try
+		{
+			request.setLoop(Integer.parseInt(loop));
+		} catch (NumberFormatException e){}
 		
 		Element paramEle = interEle.element("params");
 		
@@ -81,6 +87,12 @@ public class Parser
 			
 			String name = paramEle.attributeValue("name");
 			String value = paramEle.attributeValue("value");
+			String type = paramEle.attributeValue("type");
+			
+			if("plaintext_md5".equals(type))
+			{
+				value = DigestUtils.md5Hex(value);
+			}
 			
 			param.setName(name);
 			param.setValue(value);
@@ -101,7 +113,17 @@ public class Parser
 			List<Element> interEleList = interGroupEle.elements("interface");
 			for(Element interEle : interEleList)
 			{
-				interEle.addAttribute("url", url);
+				String uri = interEle.attributeValue("url", "");
+				if(!"".equals(uri) && !uri.startsWith("/"))
+				{
+					uri = url + "/" + uri;
+				}
+				else
+				{
+					uri = url;
+				}
+				
+				interEle.addAttribute("url", uri);
 				parseInterface(interEle, requestList);
 			}
 		}

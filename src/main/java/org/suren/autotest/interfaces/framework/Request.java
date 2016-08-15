@@ -14,6 +14,7 @@ public class Request
 	private String url;
 	private String type;
 	private List<Param> paramList;
+	private int loop;
 	public String getUrl()
 	{
 		return url;
@@ -37,5 +38,11 @@ public class Request
 	public void setParamList(List<Param> paramList)
 	{
 		this.paramList = paramList;
+	}
+	public int getLoop() {
+		return loop;
+	}
+	public void setLoop(int loop) {
+		this.loop = loop;
 	}
 }
