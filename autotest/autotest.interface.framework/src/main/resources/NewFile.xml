@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suren:autotest xmlns:suren="http://autotest.interface.surenpi.com"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://autotest.interface.surenpi.com http://autotest.interface.surenpi.com ">
+	xsi:schemaLocation="http://autotest.interface.surenpi.com http://autotest.interface.surenpi.com">
 	<suren:interfaceGroup url="http://fanyi.youdao.com/translate">
 		<suren:interface method="POST">
 			<suren:params>
@@ -15,6 +15,16 @@
 				<suren:param name="action" value="FY_BY_CLICKBUTTON" />
 				<suren:param name="doctype" value="json" />
 				<suren:param name="i" value="love you" />
+			</suren:params>
+		</suren:interface>
+	</suren:interfaceGroup>
+	
+	<suren:interfaceGroup url="http://localhost:8080/G2/">
+		<suren:interface method="GET" url="login!login.do" loop="10000">
+			<suren:params>	
+				<suren:param name="systemId" value="4028dead567351a50156738bb5d30009"/>
+				<suren:param name="username" value="super"/>
+				<suren:param name="password" value="super" type="plaintext_md5"/>
 			</suren:params>
 		</suren:interface>
 	</suren:interfaceGroup>

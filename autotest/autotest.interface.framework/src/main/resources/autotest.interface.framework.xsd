@@ -14,7 +14,8 @@
 	
 	<complexType name="interfaceGroup">
 		<sequence>
-			<element name="interface" type="suren:interfaceType" maxOccurs="unbounded"></element>
+			<element name="interface" type="suren:interfaceType" maxOccurs="unbounded">
+			</element>
 		</sequence>
 		<attribute name="url" type="anyURI"></attribute>
 	</complexType>
@@ -24,9 +25,10 @@
 			<element name="params" type="suren:interfaceParamsType" minOccurs="0" maxOccurs="unbounded"></element>
 		</sequence>
 		<attribute name="id" type="ID"></attribute>
-		<attribute name="url" type="anyURI" use="required"></attribute>
+		<attribute name="url" type="anyURI"></attribute>
 		<attribute name="method" type="suren:interfaceMethodEnum" default="GET"></attribute>
 		<attribute name="depend" type="string"></attribute>
+		<attribute name="loop" type="positiveInteger"></attribute>
 	</complexType>
 	
 	<complexType name="interfaceParamsType">
@@ -80,6 +82,7 @@
 			<enumeration value="string"></enumeration>
 			<enumeration value="int"></enumeration>
 			<enumeration value="url"></enumeration>
+			<enumeration value="plaintext_md5"></enumeration>
 		</restriction>
 	</simpleType>
 </schema>
