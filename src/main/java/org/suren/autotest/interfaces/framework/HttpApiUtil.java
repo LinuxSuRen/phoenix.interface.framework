@@ -72,6 +72,8 @@ public class HttpApiUtil
 				String value = atCookie.getValue();
 				
 				BasicClientCookie cookie = new BasicClientCookie(name, value);
+				cookie.setDomain(atCookie.getDomain());
+				cookie.setPath(atCookie.getPath());
 				
 				cookieStore.addCookie(cookie);
 			}
