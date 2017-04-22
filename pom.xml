@@ -4,13 +4,107 @@
 
 	<groupId>com.surenpi.autotest</groupId>
 	<artifactId>autotest.interface.framework</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1-20170422</version>
+	
+	<url>https://github.com/LinuxSuRen/phoenix.interface.framework</url>
+	<name>phoenix.interface.framework</name>
+	<description>接口自动测试框架</description>
+	<licenses>
+		<license>
+			<name>Apache2.0</name>
+			<url>http://surenpi.com</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>suren</name>
+		</developer>
+	</developers>
+	<organization>
+		<name>素人</name>
+		<url>http://surenpi.com</url>
+	</organization>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<aggregate>true</aggregate>
+					<charset>UTF-8</charset>
+					<attach>true</attach>
+					<encoding>UTF-8</encoding>
+					<docencoding>UTF-8</docencoding>
+					<additionalparam>-Xdoclint:none</additionalparam>
+					<skip>${docSkip}</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<configuration>
+							<skip>${signSkip}</skip>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 	<repositories>
 		<repository>
 			<id>maven.surenpi.com</id>
 			<name>SuRen Maven Repositories</name>
-			<url>http://maven.surenpi.com/nexus/content/repositories/public/</url>
+			<url>https://oss.sonatype.org/content/groups/public</url>
 			<snapshots>
 				<enabled>true</enabled>
         		<updatePolicy>always</updatePolicy>
@@ -33,50 +127,6 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
 	</distributionManagement>
-	
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>1.4</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<filters>
-								<filter>
-									<artifact>*:*</artifact>
-									<excludes>
-										<exclude>META-INF/*.SF</exclude>
-										<exclude>META-INF/*.DSA</exclude>
-										<exclude>META-INF/*.RSA</exclude>
-									</excludes>
-								</filter>
-							</filters>
-							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass></mainClass>
-								</transformer>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-									<resource>META-INF/spring.handlers</resource>
-								</transformer>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-									<resource>META-INF/spring.schemas</resource>
-								</transformer>
-							</transformers>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 
 	<dependencies>
 		<dependency>
@@ -118,4 +168,19 @@
 			<version>4.1.9.RELEASE</version>
 		</dependency>
 	</dependencies>
+	
+	<issueManagement>
+		<url>https://github.com/LinuxSuRen/phoenix.interface.framework/issues</url>
+		<system>github</system>
+	</issueManagement>
+	
+	<scm>
+		<connection>https://github.com/LinuxSuRen/phoenix.webui.framework.git</connection>
+		<url>https://github.com/LinuxSuRen/phoenix.webui.framework</url>
+		<developerConnection>https://github.com/LinuxSuRen/phoenix.webui.framework.git</developerConnection>
+	</scm>
+	<properties>
+		<docSkip>true</docSkip>
+		<signSkip>true</signSkip>
+	</properties>
 </project>
