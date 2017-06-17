@@ -5,6 +5,12 @@
 	<groupId>com.surenpi.autotest</groupId>
 	<artifactId>autotest.interface.framework</artifactId>
 	<version>1.0.1-20170422</version>
+
+	<parent>
+		<groupId>com.surenpi.autotest</groupId>
+		<artifactId>autotest.parent</artifactId>
+		<version>1.0.0-20170504</version>
+	</parent>
 	
 	<url>https://github.com/LinuxSuRen/phoenix.interface.framework</url>
 	<name>phoenix.interface.framework</name>
@@ -165,7 +171,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.1.9.RELEASE</version>
 		</dependency>
 	</dependencies>
 	
