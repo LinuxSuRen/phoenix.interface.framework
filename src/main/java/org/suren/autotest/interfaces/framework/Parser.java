@@ -19,11 +19,11 @@ import org.dom4j.io.SAXReader;
  */
 public class Parser
 {
-	public static List<Request> parse() throws DocumentException
+	public static List<Request> parseFromClassPath(String interFile) throws DocumentException
 	{
 		List<Request> requestList = new ArrayList<Request>();
 		
-		InputStream stream = Parser.class.getClassLoader().getResourceAsStream("NewFile.xml");
+		InputStream stream = Parser.class.getClassLoader().getResourceAsStream(interFile);
 		Document doc = new SAXReader().read(stream);
 		
 		Element root = doc.getRootElement();

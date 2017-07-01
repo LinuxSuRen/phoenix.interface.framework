@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autotest>
+	<interfaceGroup url="/D/{deptId}/cost/models/{projectVersionId}/bqitems">
+		<interface method="get">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="keywords" in="query" value="string" />
+				<param name="buildingId" in="query" value="string" />
+				<param name="projectVersionId" in="path" value="string" />
+				<param name="tradeName" in="query" value="string" />
+				<param name="page" in="query" value="integer" />
+				<param name="size" in="query" value="integer" />
+				<param name="withPageCount" in="query" value="boolean" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup
+		url="/D/{deptId}/cost/models/{projectVersionId}/bqitems/changes">
+		<interface method="get">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="keywords" in="query" value="string" />
+				<param name="buildingId" in="query" value="string" />
+				<param name="projectVersionId" in="path" value="string" />
+				<param name="page" in="query" value="integer" />
+				<param name="size" in="query" value="integer" />
+				<param name="withPageCount" in="query" value="boolean" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup
+		url="/D/{deptId}/cost/models/{projectVersionId}/bqitems/unrelated">
+		<interface method="get">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="buildingId" in="query" value="string" />
+				<param name="projectVersionId" in="path" value="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup
+		url="/D/{deptId}/cost/models/{projectVersionId}/bqitems/{bqitemId}/elements">
+		<interface method="get">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="bqitemId" in="path" value="string" />
+				<param name="page" in="query" value="integer" />
+				<param name="size" in="query" value="integer" />
+				<param name="withPageCount" in="query" value="boolean" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup
+		url="/D/{deptId}/cost/models/{projectVersionId}/elements/unrelated/elementtypesummary">
+		<interface method="get">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="buildingId" in="query" value="string" />
+				<param name="projectVersionId" in="path" value="integer" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup
+		url="/D/{deptId}/cost/models/{projectVersionId}/elements/unrelated/{elementId}">
+		<interface method="get">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="buildingId" in="query" value="integer" />
+				<param name="elementId" in="path" value="string" />
+				<param name="projectVersionId" in="path" value="integer" />
+				<param name="page" in="query" value="integer" />
+				<param name="size" in="query" value="integer" />
+				<param name="withPageCount" in="query" value="boolean" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup
+		url="/D/{deptId}/cost/models/{projectVersionId}/elements/{elementId}/bqitems">
+		<interface method="get">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="elementId" in="path" value="string" />
+				<param name="page" in="query" value="integer" />
+				<param name="size" in="query" value="integer" />
+				<param name="withPageCount" in="query" value="boolean" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/D/{deptId}/cost/models/{projectVersionId}/trades">
+		<interface method="get">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="keywords" in="query" value="string" />
+				<param name="buildingId" in="query" value="string" />
+				<param name="projectVersionId" in="path" value="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/D/{deptId}/quantityprices">
+		<interface method="get">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="page" in="query" value="integer" />
+				<param name="size" in="query" value="integer" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="quantityPriceBillProps" in="body" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/D/{deptId}/quantityprices/{id}">
+		<interface method="get">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="id" in="path" value="integer" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="deptId" in="path" value="integer" />
+				<param name="id" in="path" value="integer" />
+				<param name="quantityPriceBillProps" in="body" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="path" value="integer" />
+			</params>
+		</interface>
+	</interfaceGroup>
+</autotest>

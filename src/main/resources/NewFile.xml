@@ -18,14 +18,4 @@
 			</suren:params>
 		</suren:interface>
 	</suren:interfaceGroup>
-	
-	<suren:interfaceGroup url="http://localhost:8080/G2/">
-		<suren:interface method="GET" url="login!login.do" loop="10000">
-			<suren:params>	
-				<suren:param name="systemId" value="4028dead567351a50156738bb5d30009"/>
-				<suren:param name="username" value="super"/>
-				<suren:param name="password" value="super" type="plaintext_md5"/>
-			</suren:params>
-		</suren:interface>
-	</suren:interfaceGroup>
 </suren:autotest>

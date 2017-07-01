@@ -8,9 +8,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.stream.ImageOutputStreamImpl;
-
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -29,7 +26,7 @@ import net.sf.json.JSONObject;
  * @author suren
  * @date Aug 13, 2016 12:57:20 PM
  */
-public class Test
+public class Testa
 {
 
 	/**
@@ -42,7 +39,7 @@ public class Test
 		
 		try
 		{
-			List<Request> requestList = Parser.parse();
+			List<Request> requestList = Parser.parseFromClassPath("NewFile.xml");
 			for(Request request : requestList)
 			{
 				int loop = request.getLoop();

@@ -68,6 +68,7 @@
 		<attribute name="name" type="string" use="required"></attribute>
 		<attribute name="value" type="string" use="required"></attribute>
 		<attribute name="type" type="suren:interfaceParamValueTypeEnum" default="string"></attribute>
+		<attribute name="in" type="suren:interfaceParamInEnum" default="query"></attribute>
 	</complexType>
 
 	<simpleType name="interfaceMethodEnum">
@@ -80,9 +81,18 @@
 	<simpleType name="interfaceParamValueTypeEnum">
 		<restriction base="string">
 			<enumeration value="string"></enumeration>
-			<enumeration value="int"></enumeration>
+			<enumeration value="integer"></enumeration>
+            <enumeration value="boolean"></enumeration>
 			<enumeration value="url"></enumeration>
 			<enumeration value="plaintext_md5"></enumeration>
 		</restriction>
 	</simpleType>
+    
+    <simpleType name="interfaceParamInEnum">
+        <restriction base="string">
+            <enumeration value="query"></enumeration>
+            <enumeration value="path"></enumeration>
+            <enumeration value="body"></enumeration>
+        </restriction>
+    </simpleType>
 </schema>
