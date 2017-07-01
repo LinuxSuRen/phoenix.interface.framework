@@ -9,6 +9,7 @@
 				<element name="interface" type="suren:interfaceType" minOccurs="0" maxOccurs="unbounded"></element>
 				<element name="interfaceGroup" type="suren:interfaceGroup" minOccurs="0" maxOccurs="unbounded"></element>
 			</sequence>
+            <attribute name="host" type="string" use="optional"></attribute>
 		</complexType>
 	</element>
 	

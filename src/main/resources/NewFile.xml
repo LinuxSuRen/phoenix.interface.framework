@@ -1,21 +1,1973 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suren:autotest xmlns:suren="http://autotest.interface.surenpi.com"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://autotest.interface.surenpi.com http://autotest.interface.surenpi.com">
-	<suren:interfaceGroup url="http://fanyi.youdao.com/translate">
-		<suren:interface method="POST">
-			<suren:params>
-				<suren:param name="action" value="FY_BY_CLICKBUTTON" />
-				<suren:param name="doctype" value="json" />
-				<suren:param name="i" value="with you" />
-			</suren:params>
-		</suren:interface>
-		<suren:interface method="POST">
-			<suren:params>
-				<suren:param name="action" value="FY_BY_CLICKBUTTON" />
-				<suren:param name="doctype" value="json" />
-				<suren:param name="i" value="love you" />
-			</suren:params>
-		</suren:interface>
-	</suren:interfaceGroup>
-</suren:autotest>
+<autotest>
+	<interfaceGroup url="/api/attach_configs">
+		<interface method="get">
+			<params />
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/attach_configs/{id}">
+		<interface method="get">
+			<params>
+				<param name="id" in="path" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="path" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/attachment/count">
+		<interface method="get">
+			<params>
+				<param name="belongId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="belongId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="belongId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="belongId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="belongId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="belongId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="belongId" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/attachment/del">
+		<interface method="get">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/attachment/upload">
+		<interface method="get">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="id" in="query" type="string" />
+				<param name="ownerId" in="query" type="string" />
+				<param name="belongId" in="query" type="string" />
+				<param name="configId" in="query" type="string" />
+				<param name="fileName" in="query" type="string" />
+				<param name="relativePath" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="redirectPath" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="id" in="query" type="string" />
+				<param name="ownerId" in="query" type="string" />
+				<param name="belongId" in="query" type="string" />
+				<param name="configId" in="query" type="string" />
+				<param name="fileName" in="query" type="string" />
+				<param name="relativePath" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="redirectPath" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="id" in="query" type="string" />
+				<param name="ownerId" in="query" type="string" />
+				<param name="belongId" in="query" type="string" />
+				<param name="configId" in="query" type="string" />
+				<param name="fileName" in="query" type="string" />
+				<param name="relativePath" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="redirectPath" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="id" in="query" type="string" />
+				<param name="ownerId" in="query" type="string" />
+				<param name="belongId" in="query" type="string" />
+				<param name="configId" in="query" type="string" />
+				<param name="fileName" in="query" type="string" />
+				<param name="relativePath" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="redirectPath" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="id" in="query" type="string" />
+				<param name="ownerId" in="query" type="string" />
+				<param name="belongId" in="query" type="string" />
+				<param name="configId" in="query" type="string" />
+				<param name="fileName" in="query" type="string" />
+				<param name="relativePath" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="redirectPath" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="id" in="query" type="string" />
+				<param name="ownerId" in="query" type="string" />
+				<param name="belongId" in="query" type="string" />
+				<param name="configId" in="query" type="string" />
+				<param name="fileName" in="query" type="string" />
+				<param name="relativePath" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="redirectPath" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="id" in="query" type="string" />
+				<param name="ownerId" in="query" type="string" />
+				<param name="belongId" in="query" type="string" />
+				<param name="configId" in="query" type="string" />
+				<param name="fileName" in="query" type="string" />
+				<param name="relativePath" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="redirectPath" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data/encrypt">
+		<interface method="get">
+			<params>
+				<param name="plainText" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="plainText" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="plainText" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="plainText" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="plainText" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="plainText" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="plainText" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data_base/create_schema">
+		<interface method="get">
+			<params>
+				<param name="driver" in="query" type="string" />
+				<param name="url" in="query" type="string" />
+				<param name="port" in="query" type="integer" />
+				<param name="username" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="defaultSchema" in="query" type="string" />
+				<param name="schema" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="driver" in="query" type="string" />
+				<param name="url" in="query" type="string" />
+				<param name="port" in="query" type="integer" />
+				<param name="username" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="defaultSchema" in="query" type="string" />
+				<param name="schema" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="driver" in="query" type="string" />
+				<param name="url" in="query" type="string" />
+				<param name="port" in="query" type="integer" />
+				<param name="username" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="defaultSchema" in="query" type="string" />
+				<param name="schema" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="driver" in="query" type="string" />
+				<param name="url" in="query" type="string" />
+				<param name="port" in="query" type="integer" />
+				<param name="username" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="defaultSchema" in="query" type="string" />
+				<param name="schema" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="driver" in="query" type="string" />
+				<param name="url" in="query" type="string" />
+				<param name="port" in="query" type="integer" />
+				<param name="username" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="defaultSchema" in="query" type="string" />
+				<param name="schema" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="driver" in="query" type="string" />
+				<param name="url" in="query" type="string" />
+				<param name="port" in="query" type="integer" />
+				<param name="username" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="defaultSchema" in="query" type="string" />
+				<param name="schema" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="driver" in="query" type="string" />
+				<param name="url" in="query" type="string" />
+				<param name="port" in="query" type="integer" />
+				<param name="username" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="defaultSchema" in="query" type="string" />
+				<param name="schema" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data_base/init_schema">
+		<interface method="get">
+			<params />
+		</interface>
+		<interface method="head">
+			<params />
+		</interface>
+		<interface method="post">
+			<params />
+		</interface>
+		<interface method="put">
+			<params />
+		</interface>
+		<interface method="delete">
+			<params />
+		</interface>
+		<interface method="options">
+			<params />
+		</interface>
+		<interface method="patch">
+			<params />
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data_source_info/add.su">
+		<interface method="get">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data_source_info/count">
+		<interface method="get">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data_source_info/del.su">
+		<interface method="get">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data_source_info/download.su">
+		<interface method="get">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data_source_info/edit">
+		<interface method="get">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data_source_info/import.su">
+		<interface method="get">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data_source_info/list.su">
+		<interface method="get">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/data_source_info/save.su">
+		<interface method="get">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="dataSources.pagePackage" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/pages_info/{projectId}">
+		<interface method="get">
+			<params>
+				<param name="projectId" in="path" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="autotest.engine.driver" in="query" type="string" />
+				<param name="autotest.engine.remote" in="query" type="string" />
+				<param name="autotest.engine.timeout" in="query" type="integer" />
+				<param name="autotest.engine.width" in="query" type="integer" />
+				<param name="autotest.engine.height" in="query" type="integer" />
+				<param name="autotest.pages.page[0].field[0].locators.locator[0].name"
+					in="query" type="string" />
+				<param name="autotest.pages.page[0].field[0].locators.locator[0].value"
+					in="query" type="string" />
+				<param name="autotest.pages.page[0].field[0].locators.locator[0].timeout"
+					in="query" type="integer" />
+				<param name="autotest.pages.page[0].field[0].locators.locator[0].extend"
+					in="query" type="string" />
+				<param name="autotest.pages.page[0].field[0].name" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].data" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].type" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].action" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].strategy" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].paramPrefix" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].timeout" in="query"
+					type="integer" />
+				<param name="autotest.pages.page[0].field[0].byId" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].byCss" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].byName" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].byXpath" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].byLinkText" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].field[0].byPartialLinkText"
+					in="query" type="string" />
+				<param name="autotest.pages.page[0].field[0].byTagName" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].id" in="query" type="string" />
+				<param name="autotest.pages.page[0].clazz" in="query" type="string" />
+				<param name="autotest.pages.page[0].url" in="query" type="string" />
+				<param name="autotest.pages.page[0].dataSource" in="query"
+					type="string" />
+				<param name="autotest.pages.page[0].paramPrefix" in="query"
+					type="string" />
+				<param name="autotest.pages.pagePackage" in="query" type="string" />
+				<param name="autotest.dataSources.dataSource[0].name" in="query"
+					type="string" />
+				<param name="autotest.dataSources.dataSource[0].type" in="query"
+					type="string" />
+				<param name="autotest.dataSources.dataSource[0].resource" in="query"
+					type="string" />
+				<param name="autotest.includePage[0].pageConfig" in="query"
+					type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/pages_info/{projectId}/count">
+		<interface method="get">
+			<params>
+				<param name="projectId" in="path" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/pages_info/{projectId}/page/{id}">
+		<interface method="delete">
+			<params>
+				<param name="id" in="path" type="string" />
+				<param name="pageName" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/pages_info/{projectId}/transfer">
+		<interface method="post">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="path" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/pages_info/{projectId}/{id}">
+		<interface method="get">
+			<params>
+				<param name="id" in="path" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="path" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/pages_info/{projectId}/{id}/download">
+		<interface method="get">
+			<params>
+				<param name="id" in="path" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/pages_info/{projectId}/{id}/generateDataSource">
+		<interface method="get">
+			<params>
+				<param name="id" in="path" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/pages_info/{projectId}/{id}/generateSuiteRunner">
+		<interface method="get">
+			<params>
+				<param name="id" in="path" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/projects">
+		<interface method="get">
+			<params />
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="project" in="body" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/projects/deploy/{id}">
+		<interface method="get">
+			<params>
+				<param name="id" in="path" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/projects/import">
+		<interface method="post">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/projects/model">
+		<interface method="get">
+			<params />
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/projects/{id}">
+		<interface method="get">
+			<params>
+				<param name="id" in="path" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="path" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_info/add.su">
+		<interface method="get">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_info/addPage.su">
+		<interface method="get">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_info/count">
+		<interface method="get">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_info/del.su">
+		<interface method="get">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_info/download.su">
+		<interface method="get">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_info/edit.su">
+		<interface method="get">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_info/import.su">
+		<interface method="get">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="file" in="formData" type="file" />
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_info/list.su">
+		<interface method="get">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="projectId" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_info/run.su">
+		<interface method="get">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="normalTimes" in="query" type="integer" />
+				<param name="retryTimes" in="query" type="integer" />
+				<param name="concurrentTimes" in="query" type="integer" />
+				<param name="remark" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="normalTimes" in="query" type="integer" />
+				<param name="retryTimes" in="query" type="integer" />
+				<param name="concurrentTimes" in="query" type="integer" />
+				<param name="remark" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="normalTimes" in="query" type="integer" />
+				<param name="retryTimes" in="query" type="integer" />
+				<param name="concurrentTimes" in="query" type="integer" />
+				<param name="remark" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="normalTimes" in="query" type="integer" />
+				<param name="retryTimes" in="query" type="integer" />
+				<param name="concurrentTimes" in="query" type="integer" />
+				<param name="remark" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="normalTimes" in="query" type="integer" />
+				<param name="retryTimes" in="query" type="integer" />
+				<param name="concurrentTimes" in="query" type="integer" />
+				<param name="remark" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="normalTimes" in="query" type="integer" />
+				<param name="retryTimes" in="query" type="integer" />
+				<param name="concurrentTimes" in="query" type="integer" />
+				<param name="remark" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="normalTimes" in="query" type="integer" />
+				<param name="retryTimes" in="query" type="integer" />
+				<param name="concurrentTimes" in="query" type="integer" />
+				<param name="remark" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_info/save.su">
+		<interface method="get">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="suite.pageConfig" in="query" type="string" />
+				<param name="suite.pagePackage" in="query" type="string" />
+				<param name="suite.rows" in="query" type="string" />
+				<param name="suite.lackLines" in="query" type="string" />
+				<param name="suite.errorLines" in="query" type="string" />
+				<param name="id" in="query" type="string" />
+				<param name="projectId" in="query" type="string" />
+				<param name="name" in="query" type="string" />
+				<param name="content" in="query" type="string" />
+				<param name="createTime" in="query" type="string" />
+				<param name="remark" in="query" type="string" />
+				<param name="tabIndex" in="query" type="integer" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_log/del">
+		<interface method="get">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_log/detail">
+		<interface method="get">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_log/gifDetail">
+		<interface method="get">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="id" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/suite_runner_log/list">
+		<interface method="get">
+			<params>
+				<param name="runnerId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="runnerId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="runnerId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="runnerId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="runnerId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="runnerId" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="runnerId" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/sys/edit">
+		<interface method="get">
+			<params />
+		</interface>
+		<interface method="head">
+			<params />
+		</interface>
+		<interface method="post">
+			<params />
+		</interface>
+		<interface method="put">
+			<params />
+		</interface>
+		<interface method="delete">
+			<params />
+		</interface>
+		<interface method="options">
+			<params />
+		</interface>
+		<interface method="patch">
+			<params />
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/sys/save">
+		<interface method="get">
+			<params>
+				<param name="gifPath" in="query" type="string" />
+				<param name="securtyKey" in="query" type="string" />
+				<param name="attachRoot" in="query" type="string" />
+				<param name="chromeVer" in="query" type="string" />
+				<param name="autoIt" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="gifPath" in="query" type="string" />
+				<param name="securtyKey" in="query" type="string" />
+				<param name="attachRoot" in="query" type="string" />
+				<param name="chromeVer" in="query" type="string" />
+				<param name="autoIt" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="gifPath" in="query" type="string" />
+				<param name="securtyKey" in="query" type="string" />
+				<param name="attachRoot" in="query" type="string" />
+				<param name="chromeVer" in="query" type="string" />
+				<param name="autoIt" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="gifPath" in="query" type="string" />
+				<param name="securtyKey" in="query" type="string" />
+				<param name="attachRoot" in="query" type="string" />
+				<param name="chromeVer" in="query" type="string" />
+				<param name="autoIt" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="gifPath" in="query" type="string" />
+				<param name="securtyKey" in="query" type="string" />
+				<param name="attachRoot" in="query" type="string" />
+				<param name="chromeVer" in="query" type="string" />
+				<param name="autoIt" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="gifPath" in="query" type="string" />
+				<param name="securtyKey" in="query" type="string" />
+				<param name="attachRoot" in="query" type="string" />
+				<param name="chromeVer" in="query" type="string" />
+				<param name="autoIt" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="gifPath" in="query" type="string" />
+				<param name="securtyKey" in="query" type="string" />
+				<param name="attachRoot" in="query" type="string" />
+				<param name="chromeVer" in="query" type="string" />
+				<param name="autoIt" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/user_info/login">
+		<interface method="get">
+			<params />
+		</interface>
+		<interface method="head">
+			<params />
+		</interface>
+		<interface method="post">
+			<params />
+		</interface>
+		<interface method="put">
+			<params />
+		</interface>
+		<interface method="delete">
+			<params />
+		</interface>
+		<interface method="options">
+			<params />
+		</interface>
+		<interface method="patch">
+			<params />
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/user_info/logout">
+		<interface method="get">
+			<params />
+		</interface>
+		<interface method="head">
+			<params />
+		</interface>
+		<interface method="post">
+			<params />
+		</interface>
+		<interface method="put">
+			<params />
+		</interface>
+		<interface method="delete">
+			<params />
+		</interface>
+		<interface method="options">
+			<params />
+		</interface>
+		<interface method="patch">
+			<params />
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/user_info/regist">
+		<interface method="get">
+			<params />
+		</interface>
+		<interface method="head">
+			<params />
+		</interface>
+		<interface method="post">
+			<params />
+		</interface>
+		<interface method="put">
+			<params />
+		</interface>
+		<interface method="delete">
+			<params />
+		</interface>
+		<interface method="options">
+			<params />
+		</interface>
+		<interface method="patch">
+			<params />
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/user_info/registProcess">
+		<interface method="get">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="nickName" in="query" type="string" />
+				<param name="loginName" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="email" in="query" type="string" />
+				<param name="registTime" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="head">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="nickName" in="query" type="string" />
+				<param name="loginName" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="email" in="query" type="string" />
+				<param name="registTime" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="post">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="nickName" in="query" type="string" />
+				<param name="loginName" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="email" in="query" type="string" />
+				<param name="registTime" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="put">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="nickName" in="query" type="string" />
+				<param name="loginName" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="email" in="query" type="string" />
+				<param name="registTime" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="delete">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="nickName" in="query" type="string" />
+				<param name="loginName" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="email" in="query" type="string" />
+				<param name="registTime" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="options">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="nickName" in="query" type="string" />
+				<param name="loginName" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="email" in="query" type="string" />
+				<param name="registTime" in="query" type="string" />
+			</params>
+		</interface>
+		<interface method="patch">
+			<params>
+				<param name="id" in="query" type="string" />
+				<param name="nickName" in="query" type="string" />
+				<param name="loginName" in="query" type="string" />
+				<param name="password" in="query" type="string" />
+				<param name="email" in="query" type="string" />
+				<param name="registTime" in="query" type="string" />
+			</params>
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/user_manager/onLineCount">
+		<interface method="get">
+			<params />
+		</interface>
+		<interface method="head">
+			<params />
+		</interface>
+		<interface method="post">
+			<params />
+		</interface>
+		<interface method="put">
+			<params />
+		</interface>
+		<interface method="delete">
+			<params />
+		</interface>
+		<interface method="options">
+			<params />
+		</interface>
+		<interface method="patch">
+			<params />
+		</interface>
+	</interfaceGroup>
+	<interfaceGroup url="/api/user_manager/onLineUser">
+		<interface method="get">
+			<params />
+		</interface>
+		<interface method="head">
+			<params />
+		</interface>
+		<interface method="post">
+			<params />
+		</interface>
+		<interface method="put">
+			<params />
+		</interface>
+		<interface method="delete">
+			<params />
+		</interface>
+		<interface method="options">
+			<params />
+		</interface>
+		<interface method="patch">
+			<params />
+		</interface>
+	</interfaceGroup>
+</autotest>

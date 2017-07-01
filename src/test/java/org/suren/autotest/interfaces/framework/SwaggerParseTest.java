@@ -19,8 +19,10 @@ package org.suren.autotest.interfaces.framework;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.dom4j.DocumentException;
 import org.junit.Rule;
 import org.junit.Test;
 import org.suren.autotest.interfaces.framework.junit.ReportRule;
@@ -38,31 +40,29 @@ public class SwaggerParseTest
 	public ReportRule reportRule = new ReportRule();
 	
 	@Test
-	@Skip
-	public void justForTest()
-	{
-		System.out.println("just for test");
-	}
-	
-	@Test
-	@Skip
-	public void buffer() throws UnsupportedEncodingException, IOException
+//	@Skip
+	public void buffer() throws UnsupportedEncodingException, IOException, DocumentException
 	{
 		String swaggerText;
 		StringBuffer buffer = new StringBuffer();
 		
 		SimpleHttpClient client = new SimpleHttpClient();
+		client.setHost("http://127.0.0.1");
 		
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("username", "demo");
 		paramMap.put("password", "demo");
-		client.executePost("http://127.0.0.1/phoenix/user_info/login_process.su", paramMap);
+		client.executePost("/phoenix/user_info/login_process.su", paramMap);
 		
-		swaggerText = client.executeGet("http://127.0.0.1/phoenix/swagger-ui.html");
+		swaggerText = client.executeGet("/phoenix/v2/api-docs");
 		
 		new SwaggerParse().transfer(swaggerText, buffer);
 		
 		Assert.assertTrue(buffer.length() > 0);
-		System.out.println(buffer);
+		
+		List<Request> requestList = InterfacesParser.parseFromText(buffer);
+		
+		InvokeRequest invokeRequest = new InvokeRequest(client);
+		invokeRequest.invoke(requestList);
 	}
 }

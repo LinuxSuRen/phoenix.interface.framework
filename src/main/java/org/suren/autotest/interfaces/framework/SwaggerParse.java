@@ -63,22 +63,25 @@ public class SwaggerParse
         		Element paramsEle = interfaceEle.addElement("params");
 
         		JsonArray params = (JsonArray) requestObj.get("parameters");
-        		params.forEach((param) -> {
-        			JsonObject paramObj = param.getAsJsonObject();
-        			String paramName = paramObj.get("name").getAsString();
-        			String in = paramObj.get("in").getAsString();
-                    
-                    Element paramEle = paramsEle.addElement("param");
-                    
-                    paramEle.addAttribute("name", paramName);
-                    paramEle.addAttribute("in", in);
-                    if(paramObj.get("type") != null)
-                    {
-            			String type = paramObj.get("type").getAsString();
-                    	
-            			paramEle.addAttribute("type", type);
-                    }
-        		});
+        		if(params != null)
+        		{
+            		params.forEach((param) -> {
+            			JsonObject paramObj = param.getAsJsonObject();
+            			String paramName = paramObj.get("name").getAsString();
+            			String in = paramObj.get("in").getAsString();
+                        
+                        Element paramEle = paramsEle.addElement("param");
+                        
+                        paramEle.addAttribute("name", paramName);
+                        paramEle.addAttribute("in", in);
+                        if(paramObj.get("type") != null)
+                        {
+                			String type = paramObj.get("type").getAsString();
+                        	
+                			paramEle.addAttribute("type", type);
+                        }
+            		});
+        		}
         	});
         });
         

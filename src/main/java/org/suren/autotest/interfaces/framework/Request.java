@@ -4,6 +4,7 @@
 package org.suren.autotest.interfaces.framework;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author suren
@@ -14,6 +15,7 @@ public class Request
 	private String url;
 	private String type;
 	private List<Param> paramList;
+	private Map<String, String> bodyParam;
 	private int loop;
 	public String getUrl()
 	{
@@ -44,5 +46,19 @@ public class Request
 	}
 	public void setLoop(int loop) {
 		this.loop = loop;
+	}
+	/**
+	 * @return the bodyParam
+	 */
+	public Map<String, String> getBodyParam()
+	{
+		return bodyParam;
+	}
+	/**
+	 * @param bodyParam the bodyParam to set
+	 */
+	public void setBodyParam(Map<String, String> bodyParam)
+	{
+		this.bodyParam = bodyParam;
 	}
 }

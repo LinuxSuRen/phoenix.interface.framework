@@ -26,15 +26,19 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.config.ConnectionConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
 
 /**
@@ -43,23 +47,55 @@ import org.apache.http.util.EntityUtils;
  */
 public class SimpleHttpClient
 {
+	private String host;
+	
 	CloseableHttpClient client;
 	HttpClientContext httpClientContext;
 
 	public SimpleHttpClient()
 	{
-		client = HttpClients.createDefault();
+		ConnectionConfig config = ConnectionConfig.DEFAULT;
+		RequestConfig requestConfig = RequestConfig.custom()
+				.setConnectTimeout(3000)
+				.setConnectionRequestTimeout(3000)
+				.build();
+	
+		HttpClientBuilder builder = HttpClientBuilder.create();
+		builder.setDefaultConnectionConfig(config);
+		builder.setDefaultRequestConfig(requestConfig);
+		
+		client = builder.build();
 		httpClientContext = HttpClientContext.create();
+	}
+	
+	public String executeDel(String url)
+	{
+		return null;
+	}
+	
+	public String executePut(String url)
+	{
+		return null;
 	}
 	
 	public String executeGet(String url) throws ParseException, IOException
 	{
+		if(url.startsWith("/"))
+		{
+			url = host + url;
+		}
+		
 		HttpGet httpGet = new HttpGet(url);
 		return fetchReponseText(httpGet);
 	}
 	
 	public String executePost(String url, Map<String, String> requestBody) throws ParseException, IOException
 	{
+		if(url.startsWith("/"))
+		{
+			url = host + url;
+		}
+		
 		HttpPost post = new HttpPost(url);
 		
 		List<NameValuePair> pairList = new ArrayList<NameValuePair>();
@@ -129,5 +165,21 @@ public class SimpleHttpClient
 		}
 		
 		return null;
+	}
+
+	/**
+	 * @return the host
+	 */
+	public String getHost()
+	{
+		return host;
+	}
+
+	/**
+	 * @param host the host to set
+	 */
+	public void setHost(String host)
+	{
+		this.host = host;
 	}
 }

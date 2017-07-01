@@ -3,6 +3,7 @@
  */
 package org.suren.autotest.interfaces.framework;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +18,19 @@ import org.dom4j.io.SAXReader;
  * @author suren
  * @date Aug 13, 2016 12:59:51 PM
  */
-public class Parser
+public class InterfacesParser
 {
-	public static List<Request> parseFromClassPath(String interFile) throws DocumentException
+	public static List<Request> parseFromText(CharSequence buffer) throws DocumentException
+	{
+		ByteArrayInputStream arrayInput = new ByteArrayInputStream(buffer.toString().getBytes());
+		
+		return parseFromStream(arrayInput);
+	}
+	
+	public static List<Request> parseFromStream(InputStream input) throws DocumentException
 	{
 		List<Request> requestList = new ArrayList<Request>();
-		
-		InputStream stream = Parser.class.getClassLoader().getResourceAsStream(interFile);
-		Document doc = new SAXReader().read(stream);
+		Document doc = new SAXReader().read(input);
 		
 		Element root = doc.getRootElement();
 		
@@ -36,6 +42,13 @@ public class Parser
 		interGroupParse(interGroupEleList, requestList);
 		
 		return requestList;
+	}
+	
+	public static List<Request> parseFromClassPath(String interFile) throws DocumentException
+	{
+		InputStream stream = InterfacesParser.class.getClassLoader().getResourceAsStream(interFile);
+		
+		return parseFromStream(stream);
 	}
 
 	/**
@@ -58,7 +71,11 @@ public class Parser
 		
 		String url = interEle.attributeValue("url");
 		String loop = interEle.attributeValue("loop");
+		String type = interEle.attributeValue("method");
+		
 		request.setUrl(url);
+		request.setType(type);
+		
 		try
 		{
 			request.setLoop(Integer.parseInt(loop));
@@ -88,6 +105,7 @@ public class Parser
 			String name = paramEle.attributeValue("name");
 			String value = paramEle.attributeValue("value");
 			String type = paramEle.attributeValue("type");
+			String in = paramEle.attributeValue("in");
 			
 			if("plaintext_md5".equals(type))
 			{
@@ -96,6 +114,8 @@ public class Parser
 			
 			param.setName(name);
 			param.setValue(value);
+			param.setPosition(in);
+			param.setType(type);
 		}
 	}
 
