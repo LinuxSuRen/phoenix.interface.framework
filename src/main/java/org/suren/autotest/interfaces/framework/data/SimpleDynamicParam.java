@@ -35,14 +35,14 @@ public class SimpleDynamicParam implements DynamicParam
 		
 		if("path".equals(type))
 		{
-			url = url.replaceAll("{" + name + "}", value);
+			url = url.replaceAll("\\{" + name + "\\}", value);
 			request.setUrl(url);
 		}
 		else if("query".equals(type))
 		{
 			if(!url.contains("?"))
 			{
-				url += "?1=1&";
+				url += "?";
 			}
 			
 			url += (name + "=" + value + "&");
@@ -62,6 +62,11 @@ public class SimpleDynamicParam implements DynamicParam
 	private boolean equalWith(Class<?> clz, String name)
 	{
 		return clz.getSimpleName().toLowerCase().equals(name);
+	}
+	
+	public static void main(String[] args)
+	{
+		System.out.println("/api/attach_configs/{id}".replaceAll("\\{id\\}", "---"));
 	}
 
 }

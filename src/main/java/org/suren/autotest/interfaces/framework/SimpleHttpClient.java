@@ -59,7 +59,7 @@ public class SimpleHttpClient
 				.setConnectTimeout(3000)
 				.setConnectionRequestTimeout(3000)
 				.build();
-	
+		
 		HttpClientBuilder builder = HttpClientBuilder.create();
 		builder.setDefaultConnectionConfig(config);
 		builder.setDefaultRequestConfig(requestConfig);
@@ -91,25 +91,39 @@ public class SimpleHttpClient
 	
 	public String executePost(String url, Map<String, String> requestBody) throws ParseException, IOException
 	{
+		return executePost(url, requestBody, null);
+	}
+	
+	public String executePost(String url, Map<String, String> requestBody, Map<String, String> header) throws ParseException, IOException
+	{
 		if(url.startsWith("/"))
 		{
 			url = host + url;
 		}
 		
 		HttpPost post = new HttpPost(url);
-		
-		List<NameValuePair> pairList = new ArrayList<NameValuePair>();
-		requestBody.forEach((key, value) -> {
-			pairList.add(new BasicNameValuePair(key, value));
-		});
-		
-        try
+		if(header != null)
 		{
-        	post.setEntity(new UrlEncodedFormEntity(pairList));
+			header.forEach((key, value) -> {
+				post.setHeader(key, value);
+			});
 		}
-		catch (UnsupportedEncodingException e)
+		
+		if(requestBody != null)
 		{
-			e.printStackTrace();
+			List<NameValuePair> pairList = new ArrayList<NameValuePair>();
+			requestBody.forEach((key, value) -> {
+				pairList.add(new BasicNameValuePair(key, value));
+			});
+			
+	        try
+			{
+	        	post.setEntity(new UrlEncodedFormEntity(pairList));
+			}
+			catch (UnsupportedEncodingException e)
+			{
+				e.printStackTrace();
+			}
 		}
         
 		return fetchReponseText(post);
@@ -137,24 +151,6 @@ public class SimpleHttpClient
 			if(Location.length > 0)
 			{
 				String redirectUrl = Location[0].getValue();
-				
-//				System.out.println(toLoc);
-//				
-//				String setCookie = response.getFirstHeader("Set-Cookie").getValue();
-//				String JSESSIONID = setCookie.substring("JSESSIONID=".length(),
-//				        setCookie.indexOf(";"));
-//				    System.out.println("JSESSIONID:" + JSESSIONID);
-//				    // 新建一个Cookie
-//				    BasicClientCookie cookie = new BasicClientCookie("JSESSIONID",
-//				        JSESSIONID);
-//				    cookie.setVersion(0);
-//				    cookie.setDomain("127.0.0.1");
-//				    cookie.setPath("/uua");
-//				    // cookie.setAttribute(ClientCookie.VERSION_ATTR, "0");
-//				    // cookie.setAttribute(ClientCookie.DOMAIN_ATTR, "127.0.0.1");
-//				    // cookie.setAttribute(ClientCookie.PORT_ATTR, "8080");
-//				    // cookie.setAttribute(ClientCookie.PATH_ATTR, "/CwlProWeb");
-//				    httpClientContext.getCookieStore().addCookie(cookie);
 				if(redirectUrl.startsWith("/"))
 				{
 					redirectUrl = "http://" + request.getURI().getHost() + redirectUrl;
@@ -162,6 +158,10 @@ public class SimpleHttpClient
 				
 				return executeGet(redirectUrl);
 			}
+		}
+		else
+		{
+			throw new HttpException(statusCode);
 		}
 		
 		return null;

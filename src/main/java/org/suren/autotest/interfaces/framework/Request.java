@@ -17,6 +17,8 @@ public class Request
 	private List<Param> paramList;
 	private Map<String, String> bodyParam;
 	private int loop;
+	private boolean enable = true;
+	private boolean jsonApp;
 	public String getUrl()
 	{
 		return url;
@@ -60,5 +62,33 @@ public class Request
 	public void setBodyParam(Map<String, String> bodyParam)
 	{
 		this.bodyParam = bodyParam;
+	}
+	/**
+	 * @return the enable
+	 */
+	public boolean isEnable()
+	{
+		return enable;
+	}
+	/**
+	 * @param enable the enable to set
+	 */
+	public void setEnable(boolean enable)
+	{
+		this.enable = enable;
+	}
+	/**
+	 * @return the jsonApp
+	 */
+	public boolean isJsonApp()
+	{
+		return jsonApp;
+	}
+	/**
+	 * @param jsonApp the jsonApp to set
+	 */
+	public void setJsonApp(boolean jsonApp)
+	{
+		this.jsonApp = jsonApp;
 	}
 }

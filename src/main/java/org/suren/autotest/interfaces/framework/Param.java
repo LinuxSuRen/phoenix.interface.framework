@@ -12,7 +12,23 @@ public class Param
 	private String name;
 	private String value;
 	private String type;
+	private String ref;
 	private String position;
+	private boolean required;
+	/**
+	 * @return the required
+	 */
+	public boolean isRequired()
+	{
+		return required;
+	}
+	/**
+	 * @param required the required to set
+	 */
+	public void setRequired(boolean required)
+	{
+		this.required = required;
+	}
 	public String getName()
 	{
 		return name;
@@ -56,5 +72,19 @@ public class Param
 	public void setPosition(String position)
 	{
 		this.position = position;
+	}
+	/**
+	 * @return the ref
+	 */
+	public String getRef()
+	{
+		return ref;
+	}
+	/**
+	 * @param ref the ref to set
+	 */
+	public void setRef(String ref)
+	{
+		this.ref = ref;
 	}
 }

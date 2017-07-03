@@ -60,6 +60,12 @@ public class SwaggerParse
         		Element interfaceEle = interfaceGroupEle.addElement("interface");
         		interfaceEle.addAttribute("method", method);
         		
+        		JsonArray consumes = (JsonArray) requestObj.get("consumes");
+        		if(consumes != null && consumes.size() > 0)
+        		{
+        			interfaceEle.addAttribute("consumes", consumes.get(0).getAsString());
+        		}
+        		
         		Element paramsEle = interfaceEle.addElement("params");
 
         		JsonArray params = (JsonArray) requestObj.get("parameters");
@@ -69,17 +75,25 @@ public class SwaggerParse
             			JsonObject paramObj = param.getAsJsonObject();
             			String paramName = paramObj.get("name").getAsString();
             			String in = paramObj.get("in").getAsString();
+            			boolean required = paramObj.get("required").getAsBoolean();
+            			String type = null;
                         
                         Element paramEle = paramsEle.addElement("param");
                         
                         paramEle.addAttribute("name", paramName);
                         paramEle.addAttribute("in", in);
+                        paramEle.addAttribute("required", Boolean.toString(required));
                         if(paramObj.get("type") != null)
                         {
-                			String type = paramObj.get("type").getAsString();
-                        	
-                			paramEle.addAttribute("type", type);
+                			paramObj.get("type").getAsString();
                         }
+                        else if(paramObj.has("schema"))
+                        {
+                        	type = "schema";
+                			paramEle.addAttribute("ref", ((JsonObject) paramObj.get("schema")).get("$ref").getAsString());
+                        }
+
+            			paramEle.addAttribute("type", type);
             		});
         		}
         	});

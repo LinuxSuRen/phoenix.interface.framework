@@ -106,6 +106,8 @@ public class InterfacesParser
 			String value = paramEle.attributeValue("value");
 			String type = paramEle.attributeValue("type");
 			String in = paramEle.attributeValue("in");
+			String required = paramEle.attributeValue("required");
+			String ref = paramEle.attributeValue("ref");
 			
 			if("plaintext_md5".equals(type))
 			{
@@ -116,6 +118,8 @@ public class InterfacesParser
 			param.setValue(value);
 			param.setPosition(in);
 			param.setType(type);
+			param.setRequired(Boolean.valueOf(required));
+			param.setRef(ref);
 		}
 	}
 

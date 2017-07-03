@@ -14,40 +14,42 @@
  * limitations under the License.
  */
 
-package org.suren.autotest.interfaces.framework.data;
-
-import org.apache.commons.collections.set.SynchronizedSortedSet;
+package org.suren.autotest.interfaces.framework;
 
 /**
  * @author suren
- * @date 2017年7月1日 下午1:42:17
+ * @date 2017年7月3日 上午11:04:37
  */
-public class SimpleDynamicValue implements DynamicValue
+public class HttpException extends RuntimeException
 {
 
-	@Override
-	public String getValue(String type)
+	/**  */
+	private static final long serialVersionUID = 1L;
+	
+	private int code;
+
+	/**
+	 * @param code
+	 */
+	public HttpException(int code)
 	{
-		if(Integer.class.getSimpleName().toLowerCase().equals(type))
-		{
-			return "1";
-		}
-		else if(String.class.getSimpleName().toLowerCase().equals(type))
-		{
-			return "1";
-		}
-		else if(Boolean.class.getSimpleName().toLowerCase().equals(type))
-		{
-			return "true";
-		}
-		else if(Number.class.getSimpleName().toLowerCase().equals(type))
-		{
-			return "1";
-		}
-		else
-		{
-			return "1";
-		}
+		super();
+		this.code = code;
 	}
 
+	/**
+	 * @return the code
+	 */
+	public int getCode()
+	{
+		return code;
+	}
+
+	/**
+	 * @param code the code to set
+	 */
+	public void setCode(int code)
+	{
+		this.code = code;
+	}
 }

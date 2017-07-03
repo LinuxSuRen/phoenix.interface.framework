@@ -25,6 +25,8 @@ import java.util.Map;
 import org.dom4j.DocumentException;
 import org.junit.Rule;
 import org.junit.Test;
+import org.suren.autotest.interfaces.framework.data.SwaggerJsonDynamicValue;
+import org.suren.autotest.interfaces.framework.data.SwaggerJsonValue;
 import org.suren.autotest.interfaces.framework.junit.ReportRule;
 import org.suren.autotest.interfaces.framework.junit.Skip;
 
@@ -34,7 +36,7 @@ import junit.framework.Assert;
  * @author suren
  * @date 2017年6月30日 下午5:13:14
  */
-public class SwaggerParseTest
+public class PMTest
 {
 	@Rule
 	public ReportRule reportRule = new ReportRule();
@@ -47,22 +49,39 @@ public class SwaggerParseTest
 		StringBuffer buffer = new StringBuffer();
 		
 		SimpleHttpClient client = new SimpleHttpClient();
-		client.setHost("http://127.0.0.1/phoenix");
+		client.setHost("http://192.168.94.61:8080");
 		
 		Map<String, String> paramMap = new HashMap<String, String>();
-		paramMap.put("username", "demo");
-		paramMap.put("password", "demo");
-		client.executePost("/user_info/login_process.su", paramMap);
+		paramMap.put("username", "zhaoxj@glodon.com");
+		paramMap.put("password", "aaa111");
+		client.executePost("/uaa/login", paramMap);
 		
-		swaggerText = client.executeGet("/v2/api-docs");
+		swaggerText = client.executeGet("/cost/v2/api-docs");
 		
 		new SwaggerParse().transfer(swaggerText, buffer);
+		
+		System.out.println(buffer);
 		
 		Assert.assertTrue(buffer.length() > 0);
 		
 		List<Request> requestList = InterfacesParser.parseFromText(buffer);
 		
+		requestList.forEach((req) -> {
+//			if(!req.getUrl().contains("quantityprices"))
+//			{
+//				req.setEnable(false);
+//			}
+			
+			req.setJsonApp(true);
+		});
+
+		client.setHost("http://192.168.94.61:8080/cost");
+		
+		SwaggerJsonValue swaggerJsonValue = new SwaggerJsonValue();
+		swaggerJsonValue.setDefinition(swaggerText);
+		
 		InvokeRequest invokeRequest = new InvokeRequest(client);
+		invokeRequest.setSwaggerJsonDynamicValue(swaggerJsonValue);
 		invokeRequest.invoke(requestList);
 	}
 }

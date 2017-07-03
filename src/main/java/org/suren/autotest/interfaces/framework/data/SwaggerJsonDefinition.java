@@ -16,38 +16,11 @@
 
 package org.suren.autotest.interfaces.framework.data;
 
-import org.apache.commons.collections.set.SynchronizedSortedSet;
-
 /**
  * @author suren
- * @date 2017年7月1日 下午1:42:17
+ * @date 2017年7月3日 下午5:01:54
  */
-public class SimpleDynamicValue implements DynamicValue
+public interface SwaggerJsonDefinition
 {
-
-	@Override
-	public String getValue(String type)
-	{
-		if(Integer.class.getSimpleName().toLowerCase().equals(type))
-		{
-			return "1";
-		}
-		else if(String.class.getSimpleName().toLowerCase().equals(type))
-		{
-			return "1";
-		}
-		else if(Boolean.class.getSimpleName().toLowerCase().equals(type))
-		{
-			return "true";
-		}
-		else if(Number.class.getSimpleName().toLowerCase().equals(type))
-		{
-			return "1";
-		}
-		else
-		{
-			return "1";
-		}
-	}
-
+	void setDefinition(String def);
 }
