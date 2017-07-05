@@ -16,6 +16,7 @@
 
 package org.suren.autotest.interfaces.framework.data;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -67,19 +68,25 @@ public class SwaggerJsonValue implements SwaggerJsonDynamicValue, SwaggerJsonDef
         				{
         					JsonObject itemsObj = (JsonObject) ((JsonObject) entry.getValue()).get("items");
         					
-        					value = getJsonValue(itemsObj.get("$ref").getAsString());
+        					String arrayStr = getJsonValue(itemsObj.get("$ref").getAsString());
+        					
+        					JsonArray jsonArray = new JsonArray();
+        					jsonArray.add(jsonParser.parse(arrayStr));
+        					resultObj.add(name, jsonArray);
         				}
         				else
         				{
                 			value = dynamicValue.getValue(type);
+                			
+                			resultObj.addProperty(name, value);
         				}
         			}
         			else
         			{
         				value = getJsonValue(((JsonObject) entry.getValue()).get("$ref").getAsString());
+            			
+            			resultObj.add(name, jsonParser.parse(value));
         			}
-        			
-        			resultObj.addProperty(name, value);
         		});
         	}
         }

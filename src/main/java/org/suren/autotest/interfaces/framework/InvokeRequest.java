@@ -63,15 +63,15 @@ public class InvokeRequest
 			}
 			catch(HttpException e)
 			{
-				System.err.println(request.getUrl() + " - error code : " + e.getCode());
+				System.err.println(request.getUrl() + " - " + request.getType() + " - error code : " + e.getCode());
 			}
 			catch(ConnectionPoolTimeoutException e)
 			{
-				System.err.println(request.getUrl() + " - time out");
+				System.err.println(request.getUrl() + " - " + request.getType() + " - timeout");
 			}
 			catch(Exception e)
 			{
-				System.err.println(request.getUrl() + " - unknow error");
+				System.err.println(request.getUrl() + " - " + request.getType() + " - unknow error");
 				e.printStackTrace();
 			}
 		}
@@ -154,6 +154,22 @@ public class InvokeRequest
 	public void setSwaggerJsonDynamicValue(SwaggerJsonDynamicValue swaggerJsonDynamicValue)
 	{
 		this.swaggerJsonDynamicValue = swaggerJsonDynamicValue;
+	}
+
+	/**
+	 * @return the dynamicValue
+	 */
+	public DynamicValue getDynamicValue()
+	{
+		return dynamicValue;
+	}
+
+	/**
+	 * @param dynamicValue the dynamicValue to set
+	 */
+	public void setDynamicValue(DynamicValue dynamicValue)
+	{
+		this.dynamicValue = dynamicValue;
 	}
 
 }

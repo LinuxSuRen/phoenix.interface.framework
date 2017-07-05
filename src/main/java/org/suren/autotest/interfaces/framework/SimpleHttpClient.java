@@ -29,16 +29,17 @@ import org.apache.http.ParseException;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.ConnectionConfig;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
 
 /**
@@ -68,14 +69,28 @@ public class SimpleHttpClient
 		httpClientContext = HttpClientContext.create();
 	}
 	
-	public String executeDel(String url)
+	public String executeDel(String url) throws ParseException, IOException
 	{
-		return null;
+		if(url.startsWith("/"))
+		{
+			url = host + url;
+		}
+		
+		HttpDelete httpDel = new HttpDelete(url);
+		
+		return fetchReponseText(httpDel);
 	}
 	
-	public String executePut(String url)
+	public String executePut(String url) throws ParseException, IOException
 	{
-		return null;
+		if(url.startsWith("/"))
+		{
+			url = host + url;
+		}
+		
+		HttpPut httpPut = new HttpPut(url);
+		
+		return fetchReponseText(httpPut);
 	}
 	
 	public String executeGet(String url) throws ParseException, IOException
@@ -111,18 +126,34 @@ public class SimpleHttpClient
 		
 		if(requestBody != null)
 		{
-			List<NameValuePair> pairList = new ArrayList<NameValuePair>();
-			requestBody.forEach((key, value) -> {
-				pairList.add(new BasicNameValuePair(key, value));
-			});
-			
-	        try
+			if(requestBody.size() == 1)
 			{
-	        	post.setEntity(new UrlEncodedFormEntity(pairList));
+				requestBody.forEach((key, value) -> {
+					try
+					{
+						post.setEntity(new StringEntity(value));
+					}
+					catch (UnsupportedEncodingException e)
+					{
+						e.printStackTrace();
+					}
+				});
 			}
-			catch (UnsupportedEncodingException e)
+			else
 			{
-				e.printStackTrace();
+				List<NameValuePair> pairList = new ArrayList<NameValuePair>();
+				requestBody.forEach((key, value) -> {
+					pairList.add(new BasicNameValuePair(key, value));
+				});
+				
+		        try
+				{
+		        	post.setEntity(new UrlEncodedFormEntity(pairList));
+				}
+				catch (UnsupportedEncodingException e)
+				{
+					e.printStackTrace();
+				}
 			}
 		}
         

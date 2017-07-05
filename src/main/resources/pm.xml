@@ -141,6 +141,12 @@
 				<param name="projectId" in="path" required="true" />
 				<param name="projectVersion" in="path" required="true" />
 			</params>
+			<responses>
+				<response code="200" description="ok" type="" ref=""/>
+				<response code="401" description="ok" type="" ref=""/>
+				<response code="403" description="ok" type="" ref=""/>
+				<response code="404" description="ok" type="" ref=""/>
+			</responses>
 		</interface>
 	</interfaceGroup>
 </autotest>

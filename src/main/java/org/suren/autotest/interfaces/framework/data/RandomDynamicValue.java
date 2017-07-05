@@ -16,46 +16,50 @@
 
 package org.suren.autotest.interfaces.framework.data;
 
+import java.util.Random;
+
 /**
  * @author suren
- * @date 2017年7月1日 下午1:42:17
+ * @date 2017年7月4日 上午8:55:46
  */
-public class SimpleDynamicValue extends AbstractDynamicValue
+public class RandomDynamicValue extends SimpleDynamicValue
 {
+	private Random random = new Random();
 
 	@Override
 	protected int getInt()
 	{
-		return 0;
+		return random.nextInt();
 	}
 
 	@Override
 	protected String getStr()
 	{
-		return "0";
+		return String.valueOf(getInt());
 	}
 
 	@Override
 	protected boolean getBoolean()
 	{
-		return false;
+		return random.nextBoolean();
 	}
 
 	@Override
 	protected double getDouble()
 	{
-		return 0;
+		return random.nextDouble();
 	}
 
 	@Override
 	protected float getFloat()
 	{
-		return 0;
+		return random.nextFloat();
 	}
 
 	@Override
 	protected long getLong()
 	{
-		return 0;
+		return random.nextLong();
 	}
+
 }

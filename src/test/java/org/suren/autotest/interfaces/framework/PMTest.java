@@ -25,10 +25,9 @@ import java.util.Map;
 import org.dom4j.DocumentException;
 import org.junit.Rule;
 import org.junit.Test;
-import org.suren.autotest.interfaces.framework.data.SwaggerJsonDynamicValue;
+import org.suren.autotest.interfaces.framework.data.RandomDynamicValue;
 import org.suren.autotest.interfaces.framework.data.SwaggerJsonValue;
 import org.suren.autotest.interfaces.framework.junit.ReportRule;
-import org.suren.autotest.interfaces.framework.junit.Skip;
 
 import junit.framework.Assert;
 
@@ -67,7 +66,8 @@ public class PMTest
 		List<Request> requestList = InterfacesParser.parseFromText(buffer);
 		
 		requestList.forEach((req) -> {
-//			if(!req.getUrl().contains("quantityprices"))
+//			if(!req.getUrl().contains("quantityprices")
+//					|| !req.getType().equals("get"))
 //			{
 //				req.setEnable(false);
 //			}
@@ -82,6 +82,9 @@ public class PMTest
 		
 		InvokeRequest invokeRequest = new InvokeRequest(client);
 		invokeRequest.setSwaggerJsonDynamicValue(swaggerJsonValue);
+		invokeRequest.invoke(requestList);
+		
+		invokeRequest.setDynamicValue(new RandomDynamicValue());
 		invokeRequest.invoke(requestList);
 	}
 }

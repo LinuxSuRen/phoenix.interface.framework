@@ -18,7 +18,6 @@ package org.suren.autotest.interfaces.framework.data;
 
 import java.util.HashMap;
 
-import org.suren.autotest.interfaces.framework.Param;
 import org.suren.autotest.interfaces.framework.Request;
 
 /**
