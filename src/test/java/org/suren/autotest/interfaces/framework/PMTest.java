@@ -51,7 +51,7 @@ public class PMTest
 		client.setHost("http://192.168.94.61:8080");
 		
 		Map<String, String> paramMap = new HashMap<String, String>();
-		paramMap.put("username", "zhaoxj@glodon.com");
+		paramMap.put("username", "sds");
 		paramMap.put("password", "aaa111");
 		client.executePost("/uaa/login", paramMap);
 		
