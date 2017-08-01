@@ -119,7 +119,7 @@ public class InvokeRequest
 				Map<String, String> map = new HashMap<String, String>();
 				map.put("Content-Type", "application/json;charset=UTF-8");
 				
-				simpleHttpClient.executePost(url, request.getBodyParam(), map);
+				simpleHttpClient.executePost(url, request.getBodyParam(), map, false);
 			}
 			else
 			{

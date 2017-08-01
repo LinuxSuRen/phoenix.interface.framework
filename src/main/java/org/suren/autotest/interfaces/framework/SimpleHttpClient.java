@@ -40,7 +40,10 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+
+import net.sf.json.JSONObject;
 
 /**
  * @author suren
@@ -104,12 +107,37 @@ public class SimpleHttpClient
 		return fetchReponseText(httpGet);
 	}
 	
-	public String executePost(String url, Map<String, String> requestBody) throws ParseException, IOException
+	public String executePost(String url, Map<String, String> requestBody)
+	        throws ParseException, IOException
 	{
-		return executePost(url, requestBody, null);
+		return executePost(url, requestBody, null, false);
 	}
+    
+    public String executePost(String url, Map<String, String> requestBody,
+            boolean restFul) throws ParseException, IOException
+    {
+        return executePost(url, requestBody, null, restFul);
+    }
+    
+    public String executeJsonPost(String url, JSONObject jsonObj) throws ParseException, IOException
+    {
+        if(url.startsWith("/"))
+        {
+            url = host + url;
+        }
+        
+        HttpPost post = new HttpPost(url);
+        
+        StringEntity entity = new StringEntity(jsonObj.toString(), HTTP.UTF_8);
+        entity.setContentType("application/json");
+        
+        post.setEntity(entity);
+        
+        return fetchReponseText(post);
+    }
 	
-	public String executePost(String url, Map<String, String> requestBody, Map<String, String> header) throws ParseException, IOException
+	public String executePost(String url, Map<String, String> requestBody,
+	        Map<String, String> header, boolean restFul) throws ParseException, IOException
 	{
 		if(url.startsWith("/"))
 		{
@@ -126,35 +154,51 @@ public class SimpleHttpClient
 		
 		if(requestBody != null)
 		{
-			if(requestBody.size() == 1)
-			{
-				requestBody.forEach((key, value) -> {
-					try
-					{
-						post.setEntity(new StringEntity(value));
-					}
-					catch (UnsupportedEncodingException e)
-					{
-						e.printStackTrace();
-					}
-				});
-			}
-			else
-			{
-				List<NameValuePair> pairList = new ArrayList<NameValuePair>();
-				requestBody.forEach((key, value) -> {
-					pairList.add(new BasicNameValuePair(key, value));
-				});
-				
-		        try
-				{
-		        	post.setEntity(new UrlEncodedFormEntity(pairList));
-				}
-				catch (UnsupportedEncodingException e)
-				{
-					e.printStackTrace();
-				}
-			}
+		    if(restFul)
+		    {
+		        JSONObject jsonObj = new JSONObject();
+		        
+                requestBody.forEach((key, value) -> {
+                    jsonObj.put(key, value);
+                });
+                
+                StringEntity entity = new StringEntity(jsonObj.toString(), HTTP.UTF_8);
+                entity.setContentType("application/json");
+                
+                post.setEntity(entity);
+		    }
+		    else
+		    {
+	            if(requestBody.size() == 1)
+	            {
+	                requestBody.forEach((key, value) -> {
+	                    try
+	                    {
+	                        post.setEntity(new StringEntity(value));
+	                    }
+	                    catch (UnsupportedEncodingException e)
+	                    {
+	                        e.printStackTrace();
+	                    }
+	                });
+	            }
+	            else
+	            {
+	                List<NameValuePair> pairList = new ArrayList<NameValuePair>();
+	                requestBody.forEach((key, value) -> {
+	                    pairList.add(new BasicNameValuePair(key, value));
+	                });
+	                
+	                try
+	                {
+	                    post.setEntity(new UrlEncodedFormEntity(pairList));
+	                }
+	                catch (UnsupportedEncodingException e)
+	                {
+	                    e.printStackTrace();
+	                }
+	            }
+		    }
 		}
         
 		return fetchReponseText(post);
