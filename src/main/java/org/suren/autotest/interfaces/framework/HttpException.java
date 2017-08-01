@@ -33,7 +33,7 @@ public class HttpException extends RuntimeException
 	 */
 	public HttpException(int code)
 	{
-		super();
+		super("http response code : " + code);
 		this.code = code;
 	}
 
