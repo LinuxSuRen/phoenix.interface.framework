@@ -21,7 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.http.ParseException;
-import org.junit.Ignore;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.google.gson.JsonObject;
@@ -36,12 +37,15 @@ import net.sf.json.JSONObject;
 //@Ignore
 public class WebDriverApiTest
 {
-    @Test
-    public void newSession() throws ParseException, IOException
+    private static SimpleHttpClient client;
+    private static String sessionId;
+    
+    @BeforeClass
+    public static void newSession() throws ParseException, IOException
     {
-        SimpleHttpClient client = new SimpleHttpClient();
+        client = new SimpleHttpClient();
         client.setHost("http://localhost:9515");
-
+        
         JSONObject jsonObj = new JSONObject();
         
         JSONObject chromeOptionsJson = new JSONObject();
@@ -60,25 +64,103 @@ public class WebDriverApiTest
         JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject = (JsonObject) jsonParser.parse(res);
         
-        String sessionId = jsonObject.get("sessionId").getAsString();
+        sessionId = jsonObject.get("sessionId").getAsString();
         System.out.println(sessionId);
-
+        
+        openUrl("http://surenpi.com");
+    }
+    
+    private static void openUrl(String url) throws ParseException, IOException
+    {
         Map<String, String> param = new HashMap<String, String>();
         param.clear();
-        param.put("url", "http://surenpi.com");
-        res = client.executePost("/session/" + sessionId + "/url", param, true);
+        param.put("url", url);
+        String res = client.executePost("/session/" + sessionId + "/url", param, true);
         System.out.println(res);
+    }
+    
+    @Test
+    public void getTitle() throws ParseException, IOException
+    {
+        String res = client.executeGet("/session/" + sessionId + "/title");
+        System.out.println("get title : " + res);
+    }
+    
+    @Test
+    public void getUrl() throws ParseException, IOException
+    {
+        String res = client.executeGet("/session/" + sessionId + "/url");
+        System.out.println("get current url : " + res);
+    }
+    
+    @Test
+    public void findElement() throws ParseException, IOException
+    {
+//        res = client.executePost("/session/" + sessionId + "/timeouts", null);
+//        System.out.println("set timeouts" + res);
         
-        res = client.executePost("/session/" + sessionId + "/timeouts", null);
-        System.out.println(res);
+//        res = client.executeGet("/session/" + sessionId + "/timeouts");
+//        System.out.println("timeouts : " + res);
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("using", "id");
+        param.put("value", "content-sidebar");
         
-        res = client.executeGet("/session/" + sessionId + "/timeouts");
-        System.out.println(res);
+        String res = client.executePost("/session/" + sessionId + "/element", param, true);
+        System.out.println("find element : " + res);
         
-        res = client.executeGet("/status");
-        System.out.println(res);
+        JsonParser jsonParser = new JsonParser();
+        JsonObject jsonObject = (JsonObject) jsonParser.parse(res);
         
-        res = client.executeDel("/session/" + sessionId);
+        String elementId = jsonObject.get("value").getAsJsonObject().get("ELEMENT").getAsString();
+        
+        getAttribute(elementId);
+        getCss(elementId);
+        isSelected(elementId);
+        elementEnabled(elementId);
+    }
+    
+    private void getAttribute(String elementId) throws ParseException, IOException
+    {
+        String res = client.executeGet("/session/" + sessionId + "/element/" + elementId + "/attribute/class");
+        System.out.println("getAttribute: " + res);
+    }
+    
+    private void getCss(String elementId) throws ParseException, IOException
+    {
+        String res = client.executeGet("/session/" + sessionId + "/element/" + elementId + "/css/width");
+        System.out.println("getCss: " + res);
+    }
+    
+    private void isSelected(String elementId) throws ParseException, IOException
+    {
+        String res = client.executeGet("/session/" + sessionId + "/element/" + elementId + "/selected");
+        System.out.println("isSelected: " + res);
+    }
+    
+    private void elementEnabled(String elementId) throws ParseException, IOException
+    {
+        String res = client.executeGet("/session/" + sessionId + "/element/" + elementId + "/enabled");
+        System.out.println("elementEnabled: " + res);
+    }
+    
+    @Test
+    public void getAllCookie() throws ParseException, IOException
+    {
+        String res = client.executeGet("/session/" + sessionId + "/cookie");
+        System.out.println("getAllCookie: " + res);
+    }
+    
+    @Test
+    public void status() throws ParseException, IOException
+    {
+        String res = client.executeGet("/status");
+        System.out.println("status: " + res);
+    }
+    
+    @AfterClass
+    public static void close() throws ParseException, IOException
+    {
+        String res = client.executeDel("/session/" + sessionId);
         System.out.println(res);
     }
 }
