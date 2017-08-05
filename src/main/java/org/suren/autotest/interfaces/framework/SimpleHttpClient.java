@@ -43,6 +43,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 
 /**
@@ -119,7 +120,7 @@ public class SimpleHttpClient
         return executePost(url, requestBody, null, restFul);
     }
     
-    public String executeJsonPost(String url, JSONObject jsonObj) throws ParseException, IOException
+    public String executeJsonPost(String url, JSON jsonObj) throws ParseException, IOException
     {
         if(url.startsWith("/"))
         {
